@@ -157,4 +157,27 @@ namespace Practica1
 
     }
 
+    public class Bitacora
+    {
+        public string operacion;
+        public string operando1;
+        public string operando2;
+        public string resultado;
+
+        public Bitacora(string operacion, string operando1, string operando2, string resultado)
+        {
+            this.operacion = operacion;
+            this.operando1 = operando1;
+            this.operando2 = operando2;
+            this.resultado = resultado;
+        }
+
+        public string getBitacora()
+        {
+            string bitacora = "";
+            bitacora = "Operacion: " + this.operacion + ", Operando 1: " + this.operando1 + ", Operando 2: " + this.operando2 + ", Resultado: " + this.resultado + ", Fecha: " + DateTime.Now;
+            return bitacora;
+        }
+    }
+
 }
