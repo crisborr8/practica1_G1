@@ -2,3 +2,4 @@
 - 201020614 - Luis Fernando Jimenez Fernandez
 - 201213194 - Carlos Omar Aquino Escobar
 - 200511759 - Fredi Bernjamin Cumes Simon
+- 201212854 - Freddy Alejandro Monterroso
