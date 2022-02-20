@@ -54,6 +54,8 @@ namespace Practica1
             //Codigo divicion
             ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
             txtResultado.Text = calcular.Divide(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Divicion", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             //d.setOperador1(float.Parse(txtValor1.Text));
             //d.setOperador2(float.Parse(txtValor2.Text));
             //txtResultado.Text = d.Operar() + "";
