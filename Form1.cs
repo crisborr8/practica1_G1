@@ -14,13 +14,11 @@ namespace Practica1
         Suma s = new Suma();
         Resta r = new Resta();
         Multiplicacion m = new Multiplicacion();
-
-
+        Division d = new Division();
         public Form1()
         {
             InitializeComponent();
         }
-
         private void btnSuma_Click(object sender, EventArgs e)
         {
             //Código Suma
@@ -29,7 +27,6 @@ namespace Practica1
             s.setOperador2(float.Parse(txtValor2.Text));
             txtResultado.Text = s.Operar() + "";
         }
-
         private void btnResta_Click(object sender, EventArgs e)
         {
             //Código Resta
@@ -38,7 +35,6 @@ namespace Practica1
             txtResultado.Text = r.Operar() + "";
 
         }
-
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
             //Codigo multiplicacion
@@ -49,7 +45,10 @@ namespace Practica1
 
         private void btnDivicion_Click(object sender, EventArgs e)
         {
-            //Código Divicion
+            //Codigo divicion
+            d.setOperador1(float.Parse(txtValor1.Text));
+            d.setOperador2(float.Parse(txtValor2.Text));
+            txtResultado.Text = d.Operar() + "";
         }
 
         private void btnPotencia_Click(object sender, EventArgs e)
@@ -66,8 +65,6 @@ namespace Practica1
         void setOperador2(float op2);
 
     }
-
-
     public class Suma : Operacion
     {
         public float operador1;
@@ -119,6 +116,26 @@ namespace Practica1
         public float Operar()
         {
             return operador1 * operador2;
+        }
+
+        public void setOperador1(float op1)
+        {
+            operador1 = op1;
+        }
+        public void setOperador2(float op2)
+        {
+            operador2 = op2;
+        }
+
+    }
+    public class Division : Operacion
+    {
+        public float operador1;
+        public float operador2;
+
+        public float Operar()
+        {
+            return operador1 / operador2;
         }
 
         public void setOperador1(float op1)
