@@ -43,6 +43,8 @@ namespace Practica1
         {
             ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
             txtResultado.Text = calcular.Multiply(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Multiplicación", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n"  + log.getBitacora();
             //Codigo multiplicacion
             /* m.setOperador1(float.Parse(txtValor1.Text));
              m.setOperador2(float.Parse(txtValor2.Text));
