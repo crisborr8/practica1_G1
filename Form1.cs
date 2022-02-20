@@ -12,6 +12,8 @@ namespace Practica1
     public partial class Form1 : Form
     {
         Suma s = new Suma();
+        Resta r = new Resta();
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +31,10 @@ namespace Practica1
         private void btnResta_Click(object sender, EventArgs e)
         {
             //Código Resta
+            r.setOperador1(float.Parse(txtValor1.Text));
+            r.setOperador2(float.Parse(txtValor2.Text));
+            txtResultado.Text = r.Operar() + "";
+
         }
 
         private void btnMultiplicacion_Click(object sender, EventArgs e)
@@ -77,4 +83,27 @@ namespace Practica1
         }
 
     }
+
+    public class Resta : Operacion
+    {
+        public float operador1;
+        public float operador2;
+
+        public float Operar()
+        {
+            return operador1 - operador2;
+        }
+
+        public void setOperador1(float op1)
+        {
+            operador1 = op1;
+        }
+
+        public void setOperador2(float op2)
+        {
+            operador2 = op2;
+        }
+
+    }
+
 }
