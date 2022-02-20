@@ -33,9 +33,10 @@ namespace Practica1
         private void btnResta_Click(object sender, EventArgs e)
         {
             //Código Resta
-            r.setOperador1(float.Parse(txtValor1.Text));
+            txtResultado.Text = calcular.Subtract(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            /*r.setOperador1(float.Parse(txtValor1.Text));
             r.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = r.Operar() + "";
+            txtResultado.Text = r.Operar() + "";*/
 
         }
         private void btnMultiplicacion_Click(object sender, EventArgs e)
