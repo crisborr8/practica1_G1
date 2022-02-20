@@ -44,8 +44,20 @@ namespace Practica1
         private void btnResta_Click(object sender, EventArgs e)
         {
             //Código Resta
-            txtResultado.Text = calcular.Subtract(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
-            Bitacora log = new Bitacora("Resta", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            String operacion = "Resta ";
+            if ((float.Parse(txtValor1.Text) % 1) == 0 && (float.Parse(txtValor2.Text) % 1) == 0)
+            {
+                operacion += "web:";                
+                txtResultado.Text = calcular.Subtract((int)float.Parse(txtValor1.Text), (int)float.Parse(txtValor2.Text)) + "";
+            }
+            else
+            {
+                operacion += "local:";
+                r.setOperador1(float.Parse(txtValor1.Text));
+                r.setOperador2(float.Parse(txtValor2.Text));
+                txtResultado.Text = r.Operar() + "";
+            }            
+            Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
             txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             /*r.setOperador1(float.Parse(txtValor1.Text));
             r.setOperador2(float.Parse(txtValor2.Text));
