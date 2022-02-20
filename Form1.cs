@@ -15,6 +15,9 @@ namespace Practica1
         Resta r = new Resta();
         Multiplicacion m = new Multiplicacion();
         Division d = new Division();
+
+        ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,33 +25,38 @@ namespace Practica1
         private void btnSuma_Click(object sender, EventArgs e)
         {
             //Código Suma
-            //Codigo Suma
-            s.setOperador1(float.Parse(txtValor1.Text));
-            s.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = s.Operar() + "";
+            txtResultado.Text = calcular.Add(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            //s.setOperador1(float.Parse(txtValor1.Text));
+            //s.setOperador2(float.Parse(txtValor2.Text));
+            //txtResultado.Text = s.Operar() + "";
         }
         private void btnResta_Click(object sender, EventArgs e)
         {
             //Código Resta
-            r.setOperador1(float.Parse(txtValor1.Text));
+            txtResultado.Text = calcular.Subtract(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            /*r.setOperador1(float.Parse(txtValor1.Text));
             r.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = r.Operar() + "";
+            txtResultado.Text = r.Operar() + "";*/
 
         }
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
+            ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
+            txtResultado.Text = calcular.Multiply(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
             //Codigo multiplicacion
-            m.setOperador1(float.Parse(txtValor1.Text));
-            m.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = m.Operar() + "";
+            /* m.setOperador1(float.Parse(txtValor1.Text));
+             m.setOperador2(float.Parse(txtValor2.Text));
+             txtResultado.Text = m.Operar() + "";*/
         }
 
         private void btnDivicion_Click(object sender, EventArgs e)
         {
             //Codigo divicion
-            d.setOperador1(float.Parse(txtValor1.Text));
-            d.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = d.Operar() + "";
+            ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
+            txtResultado.Text = calcular.Divide(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            //d.setOperador1(float.Parse(txtValor1.Text));
+            //d.setOperador2(float.Parse(txtValor2.Text));
+            //txtResultado.Text = d.Operar() + "";
         }
 
         private void btnPotencia_Click(object sender, EventArgs e)
