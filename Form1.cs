@@ -40,5 +40,14 @@ namespace Practica1
         {
             //Código Potencia
         }
+
+    }
+
+    interface Operacion
+    {
+        float Operar();
+        void setOperador1(float op1);
+        void setOperador2(float op2);
+
     }
 }
