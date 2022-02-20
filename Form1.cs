@@ -26,6 +26,8 @@ namespace Practica1
         {
             //Código Suma
             txtResultado.Text = calcular.Add(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Suma: ", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             //s.setOperador1(float.Parse(txtValor1.Text));
             //s.setOperador2(float.Parse(txtValor2.Text));
             //txtResultado.Text = s.Operar() + "";
