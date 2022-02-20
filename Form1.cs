@@ -40,10 +40,12 @@ namespace Practica1
         }
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
+            ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
+            txtResultado.Text = calcular.Multiply(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
             //Codigo multiplicacion
-            m.setOperador1(float.Parse(txtValor1.Text));
-            m.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = m.Operar() + "";
+            /* m.setOperador1(float.Parse(txtValor1.Text));
+             m.setOperador2(float.Parse(txtValor2.Text));
+             txtResultado.Text = m.Operar() + "";*/
         }
 
         private void btnDivicion_Click(object sender, EventArgs e)
