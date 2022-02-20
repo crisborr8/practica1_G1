@@ -3,3 +3,4 @@
 - 201213194 - Carlos Omar Aquino Escobar
 - 200511759 - Fredi Bernjamin Cumes Simon
 - 201212854 - Freddy Alejandro Monterroso
+- 201612419 - Edvin Miguel Castro Ajiatas
