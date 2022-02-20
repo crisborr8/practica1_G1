@@ -13,6 +13,8 @@ namespace Practica1
     {
         Suma s = new Suma();
         Resta r = new Resta();
+        Multiplicacion m = new Multiplicacion();
+
 
         public Form1()
         {
@@ -39,7 +41,10 @@ namespace Practica1
 
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
-            //Código Multiplicacion
+            //Codigo multiplicacion
+            m.setOperador1(float.Parse(txtValor1.Text));
+            m.setOperador2(float.Parse(txtValor2.Text));
+            txtResultado.Text = m.Operar() + "";
         }
 
         private void btnDivicion_Click(object sender, EventArgs e)
@@ -99,6 +104,27 @@ namespace Practica1
             operador1 = op1;
         }
 
+        public void setOperador2(float op2)
+        {
+            operador2 = op2;
+        }
+
+    }
+
+    public class Multiplicacion : Operacion
+    {
+        public float operador1;
+        public float operador2;
+
+        public float Operar()
+        {
+            return operador1 * operador2;
+        }
+
+        public void setOperador1(float op1)
+        {
+            operador1 = op1;
+        }
         public void setOperador2(float op2)
         {
             operador2 = op2;
