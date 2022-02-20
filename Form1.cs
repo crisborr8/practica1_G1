@@ -36,6 +36,8 @@ namespace Practica1
         {
             //Código Resta
             txtResultado.Text = calcular.Subtract(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Resta", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             /*r.setOperador1(float.Parse(txtValor1.Text));
             r.setOperador2(float.Parse(txtValor2.Text));
             txtResultado.Text = r.Operar() + "";*/
