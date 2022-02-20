@@ -26,6 +26,8 @@ namespace Practica1
         {
             //Código Suma
             txtResultado.Text = calcular.Add(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Suma: ", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             //s.setOperador1(float.Parse(txtValor1.Text));
             //s.setOperador2(float.Parse(txtValor2.Text));
             //txtResultado.Text = s.Operar() + "";
@@ -34,6 +36,8 @@ namespace Practica1
         {
             //Código Resta
             txtResultado.Text = calcular.Subtract(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Resta", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             /*r.setOperador1(float.Parse(txtValor1.Text));
             r.setOperador2(float.Parse(txtValor2.Text));
             txtResultado.Text = r.Operar() + "";*/
@@ -43,6 +47,8 @@ namespace Practica1
         {
             ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
             txtResultado.Text = calcular.Multiply(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Multiplicación", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n"  + log.getBitacora();
             //Codigo multiplicacion
             /* m.setOperador1(float.Parse(txtValor1.Text));
              m.setOperador2(float.Parse(txtValor2.Text));
@@ -54,6 +60,8 @@ namespace Practica1
             //Codigo divicion
             ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
             txtResultado.Text = calcular.Divide(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            Bitacora log = new Bitacora("Divicion", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             //d.setOperador1(float.Parse(txtValor1.Text));
             //d.setOperador2(float.Parse(txtValor2.Text));
             //txtResultado.Text = d.Operar() + "";
@@ -155,6 +163,29 @@ namespace Practica1
             operador2 = op2;
         }
 
+    }
+
+    public class Bitacora
+    {
+        public string operacion;
+        public string operando1;
+        public string operando2;
+        public string resultado;
+
+        public Bitacora(string operacion, string operando1, string operando2, string resultado)
+        {
+            this.operacion = operacion;
+            this.operando1 = operando1;
+            this.operando2 = operando2;
+            this.resultado = resultado;
+        }
+
+        public string getBitacora()
+        {
+            string bitacora = "";
+            bitacora = "Operacion: " + this.operacion + ", Operando 1: " + this.operando1 + ", Operando 2: " + this.operando2 + ", Resultado: " + this.resultado + ", Fecha: " + DateTime.Now;
+            return bitacora;
+        }
     }
 
 }
