@@ -15,6 +15,9 @@ namespace Practica1
         Resta r = new Resta();
         Multiplicacion m = new Multiplicacion();
         Division d = new Division();
+
+        ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,10 +25,10 @@ namespace Practica1
         private void btnSuma_Click(object sender, EventArgs e)
         {
             //Código Suma
-            //Codigo Suma
-            s.setOperador1(float.Parse(txtValor1.Text));
-            s.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = s.Operar() + "";
+            txtResultado.Text = calcular.Add(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            //s.setOperador1(float.Parse(txtValor1.Text));
+            //s.setOperador2(float.Parse(txtValor2.Text));
+            //txtResultado.Text = s.Operar() + "";
         }
         private void btnResta_Click(object sender, EventArgs e)
         {
