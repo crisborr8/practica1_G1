@@ -52,9 +52,11 @@ namespace Practica1
         private void btnDivicion_Click(object sender, EventArgs e)
         {
             //Codigo divicion
-            d.setOperador1(float.Parse(txtValor1.Text));
-            d.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = d.Operar() + "";
+            ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
+            txtResultado.Text = calcular.Divide(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            //d.setOperador1(float.Parse(txtValor1.Text));
+            //d.setOperador2(float.Parse(txtValor2.Text));
+            //txtResultado.Text = d.Operar() + "";
         }
 
         private void btnPotencia_Click(object sender, EventArgs e)
