@@ -41,7 +41,7 @@ namespace Practica1
                 txtResultado.Text = s.Operar() + "";
             }
             Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
-            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora() + ", Fecha: " + DateTime.Now;
         }
         private void btnResta_Click(object sender, EventArgs e)
         {
@@ -230,7 +230,7 @@ namespace Practica1
         public string getBitacora()
         {
             string bitacora = "";
-            bitacora = "Operacion: " + this.operacion + ", Operando 1: " + this.operando1 + ", Operando 2: " + this.operando2 + ", Resultado: " + this.resultado + ", Fecha: " + DateTime.Now;
+            bitacora = "Operacion: " + this.operacion + ", Operando 1: " + this.operando1 + ", Operando 2: " + this.operando2 + ", Resultado: " + this.resultado;
             return bitacora;
         }
     }
