@@ -111,7 +111,7 @@ namespace Practica1
                 txtResultado.Text = d.Operar() + "";
             }
             Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
-            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora() + ", Fecha: " + DateTime.Now;
         }
 
         private void btnPotencia_Click(object sender, EventArgs e)
