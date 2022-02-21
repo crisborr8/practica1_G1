@@ -89,7 +89,7 @@ namespace Practica1
                 txtResultado.Text = m.Operar() + "";
             }
             Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
-            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora() + ", Fecha: " + DateTime.Now;
         }
 
         private void btnDivicion_Click(object sender, EventArgs e)
