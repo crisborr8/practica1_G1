@@ -26,16 +26,18 @@ namespace Practica1
         {
             //Código Suma
             String operacion = "Suma ";
-            if ((float.Parse(txtValor1.Text) % 1) == 0 && (float.Parse(txtValor2.Text) % 1) == 0)
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".", ",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
             {
                 operacion += "web:";
-                txtResultado.Text = calcular.Add((int)float.Parse(txtValor1.Text), (int)float.Parse(txtValor2.Text)) + "";
+                txtResultado.Text = calcular.Add((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
             }
             else
             {
                 operacion += "local:";
-                s.setOperador1(float.Parse(txtValor1.Text));
-                s.setOperador2(float.Parse(txtValor2.Text));
+                s.setOperador1(float.Parse(txtValor1.Text.Replace(".", ",")));
+                s.setOperador2(float.Parse(txtValor2.Text.Replace(".", ",")));
                 txtResultado.Text = s.Operar() + "";
             }
             Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
@@ -45,16 +47,18 @@ namespace Practica1
         {
             //Código Resta
             String operacion = "Resta ";
-            if ((float.Parse(txtValor1.Text) % 1) == 0 && (float.Parse(txtValor2.Text) % 1) == 0)
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".", ",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
             {
-                operacion += "web:";                
-                txtResultado.Text = calcular.Subtract((int)float.Parse(txtValor1.Text), (int)float.Parse(txtValor2.Text)) + "";
+                operacion += "web:";
+                txtResultado.Text = calcular.Subtract((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
             }
             else
             {
                 operacion += "local:";
-                r.setOperador1(float.Parse(txtValor1.Text));
-                r.setOperador2(float.Parse(txtValor2.Text));
+                r.setOperador1(float.Parse(txtValor1.Text.Replace(".", ",")));
+                r.setOperador2(float.Parse(txtValor2.Text.Replace(".", ",")));
                 txtResultado.Text = r.Operar() + "";
             }            
             Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
@@ -70,10 +74,12 @@ namespace Practica1
            //Codigo multiplicacion
 
             String operacion = "Multiplicación ";
-            if ((float.Parse(txtValor1.Text.Replace(".",",")) % 1) == 0 && (float.Parse(txtValor2.Text.Replace(".", ",")) % 1) == 0)
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".", ",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
             {
                 operacion += "web:";
-                txtResultado.Text = calcular.Multiply((int)float.Parse(txtValor1.Text), (int)float.Parse(txtValor2.Text)) + "";
+                txtResultado.Text = calcular.Multiply((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
             }
             else
             {
@@ -89,13 +95,23 @@ namespace Practica1
         private void btnDivicion_Click(object sender, EventArgs e)
         {
             //Codigo divicion
-            ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
-            txtResultado.Text = calcular.Divide(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
-            Bitacora log = new Bitacora("Divicion", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            String operacion = "Divicion ";
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".",",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
+            {
+                operacion += "web:";
+                txtResultado.Text = calcular.Divide((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
+            }
+            else
+            {
+                operacion += "local:";
+                d.setOperador1(float.Parse(txtValor1.Text.Replace(".", ",")));
+                d.setOperador2(float.Parse(txtValor2.Text.Replace(".", ",")));
+                txtResultado.Text = d.Operar() + "";
+            }
+            Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
             txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
-            //d.setOperador1(float.Parse(txtValor1.Text));
-            //d.setOperador2(float.Parse(txtValor2.Text));
-            //txtResultado.Text = d.Operar() + "";
         }
 
         private void btnPotencia_Click(object sender, EventArgs e)
