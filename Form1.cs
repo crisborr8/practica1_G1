@@ -25,15 +25,44 @@ namespace Practica1
         private void btnSuma_Click(object sender, EventArgs e)
         {
             //Código Suma
-            txtResultado.Text = calcular.Add(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
-            //s.setOperador1(float.Parse(txtValor1.Text));
-            //s.setOperador2(float.Parse(txtValor2.Text));
-            //txtResultado.Text = s.Operar() + "";
+            String operacion = "Suma ";
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".", ",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
+            {
+                operacion += "web:";
+                txtResultado.Text = calcular.Add((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
+            }
+            else
+            {
+                operacion += "local:";
+                s.setOperador1(float.Parse(txtValor1.Text.Replace(".", ",")));
+                s.setOperador2(float.Parse(txtValor2.Text.Replace(".", ",")));
+                txtResultado.Text = s.Operar() + "";
+            }
+            Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
         }
         private void btnResta_Click(object sender, EventArgs e)
         {
             //Código Resta
-            txtResultado.Text = calcular.Subtract(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
+            String operacion = "Resta ";
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".", ",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
+            {
+                operacion += "web:";
+                txtResultado.Text = calcular.Subtract((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
+            }
+            else
+            {
+                operacion += "local:";
+                r.setOperador1(float.Parse(txtValor1.Text.Replace(".", ",")));
+                r.setOperador2(float.Parse(txtValor2.Text.Replace(".", ",")));
+                txtResultado.Text = r.Operar() + "";
+            }            
+            Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
             /*r.setOperador1(float.Parse(txtValor1.Text));
             r.setOperador2(float.Parse(txtValor2.Text));
             txtResultado.Text = r.Operar() + "";*/
@@ -41,22 +70,48 @@ namespace Practica1
         }
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
-            ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
-            txtResultado.Text = calcular.Multiply(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
-            //Codigo multiplicacion
-            /* m.setOperador1(float.Parse(txtValor1.Text));
-             m.setOperador2(float.Parse(txtValor2.Text));
-             txtResultado.Text = m.Operar() + "";*/
+
+           //Codigo multiplicacion
+
+            String operacion = "Multiplicación ";
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".", ",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
+            {
+                operacion += "web:";
+                txtResultado.Text = calcular.Multiply((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
+            }
+            else
+            {
+                operacion += "local:";
+                m.setOperador1(float.Parse(txtValor1.Text.Replace(".", ",")));
+                m.setOperador2(float.Parse(txtValor2.Text.Replace(".", ",")));
+                txtResultado.Text = m.Operar() + "";
+            }
+            Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
         }
 
         private void btnDivicion_Click(object sender, EventArgs e)
         {
             //Codigo divicion
-            ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
-            txtResultado.Text = calcular.Divide(int.Parse(txtValor1.Text), int.Parse(txtValor2.Text)) + "";
-            //d.setOperador1(float.Parse(txtValor1.Text));
-            //d.setOperador2(float.Parse(txtValor2.Text));
-            //txtResultado.Text = d.Operar() + "";
+            String operacion = "Divicion ";
+            String operador1 = txtValor1.Text.Replace(".", ",");
+            String operador2 = txtValor2.Text.Replace(".",",");
+            if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
+            {
+                operacion += "web:";
+                txtResultado.Text = calcular.Divide((int)float.Parse(operador1), (int)float.Parse(operador2)) + "";
+            }
+            else
+            {
+                operacion += "local:";
+                d.setOperador1(float.Parse(txtValor1.Text.Replace(".", ",")));
+                d.setOperador2(float.Parse(txtValor2.Text.Replace(".", ",")));
+                txtResultado.Text = d.Operar() + "";
+            }
+            Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
         }
 
         private void btnPotencia_Click(object sender, EventArgs e)
@@ -155,6 +210,29 @@ namespace Practica1
             operador2 = op2;
         }
 
+    }
+
+    public class Bitacora
+    {
+        public string operacion;
+        public string operando1;
+        public string operando2;
+        public string resultado;
+
+        public Bitacora(string operacion, string operando1, string operando2, string resultado)
+        {
+            this.operacion = operacion;
+            this.operando1 = operando1;
+            this.operando2 = operando2;
+            this.resultado = resultado;
+        }
+
+        public string getBitacora()
+        {
+            string bitacora = "";
+            bitacora = "Operacion: " + this.operacion + ", Operando 1: " + this.operando1 + ", Operando 2: " + this.operando2 + ", Resultado: " + this.resultado + ", Fecha: " + DateTime.Now;
+            return bitacora;
+        }
     }
 
 }
