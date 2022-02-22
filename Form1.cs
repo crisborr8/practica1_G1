@@ -15,6 +15,7 @@ namespace Practica1
         Resta r = new Resta();
         Multiplicacion m = new Multiplicacion();
         Division d = new Division();
+        Potencia p = new Potencia();
 
         ws_calculadora.CalculatorSoapClient calcular = new ws_calculadora.CalculatorSoapClient();
 
@@ -63,9 +64,6 @@ namespace Practica1
             }            
             Bitacora log = new Bitacora(operacion, txtValor1.Text, txtValor2.Text, txtResultado.Text);
             txtLog.Text = txtLog.Text + "\n" + log.getBitacora() + ", Fecha: " + DateTime.Now;
-            /*r.setOperador1(float.Parse(txtValor1.Text));
-            r.setOperador2(float.Parse(txtValor2.Text));
-            txtResultado.Text = r.Operar() + "";*/
 
         }
         private void btnMultiplicacion_Click(object sender, EventArgs e)
@@ -94,8 +92,8 @@ namespace Practica1
 
         private void btnDivicion_Click(object sender, EventArgs e)
         {
-            //Codigo divicion
-            String operacion = "Divicion ";
+            //Codigo division
+            String operacion = "Division ";
             String operador1 = txtValor1.Text.Replace(".", ",");
             String operador2 = txtValor2.Text.Replace(".",",");
             if ((float.Parse(operador1) % 1) == 0 && (float.Parse(operador2) % 1) == 0)
@@ -116,7 +114,12 @@ namespace Practica1
 
         private void btnPotencia_Click(object sender, EventArgs e)
         {
-            //Código Potencia
+            p.setOperador1(float.Parse(txtValor1.Text));
+            p.setOperador2(float.Parse(txtValor2.Text));
+            txtResultado.Text = p.Operar() + "";
+
+            Bitacora log = new Bitacora("Potencia", txtValor1.Text, txtValor2.Text, txtResultado.Text);
+            txtLog.Text = txtLog.Text + "\n" + log.getBitacora();
         }
 
     }
@@ -199,6 +202,27 @@ namespace Practica1
         public float Operar()
         {
             return operador1 / operador2;
+        }
+
+        public void setOperador1(float op1)
+        {
+            operador1 = op1;
+        }
+        public void setOperador2(float op2)
+        {
+            operador2 = op2;
+        }
+
+    }
+
+    public class Potencia : Operacion
+    {
+        public float operador1;
+        public float operador2;
+
+        public float Operar()
+        {
+            return Convert.ToSingle(Math.Pow(operador1, operador2));
         }
 
         public void setOperador1(float op1)
